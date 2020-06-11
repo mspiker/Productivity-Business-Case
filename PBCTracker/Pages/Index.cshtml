@@ -6,10 +6,12 @@
 
 <a asp-page="/Inventory/Edit" class="btn btn-primary m-1">Create New Business Case</a>
 
+<hr />
+
 @{
-    if (Model.Cases.Count() == 0) {
-        <hr />
-        <h1>Your Business Cases</h1>
+    if (Model.Cases.Count() == 0)
+    {
+
         <p>You have no business cases, click Create New Business Case to start a new request.</p>
     }
 }
@@ -40,33 +42,41 @@
             progress = "100%";
             progressColor = "bg-danger";
         }
-    
+
         <div class="card" style="min-width: 18rem; max-width: 30.5%;">
             <div class="card-body">
                 <h5 class="card-title">@c.RequestType Business Case</h5>
                 <div class="progress">
                     <div class="progress-bar @progressColor" role="progressbar" style="width: @progress;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">@c.Status</div>
                 </div>
-                <p>@c.Title</p>
+                <p><strong>@c.Title</strong></p>
                 <p>Submitted @c.SubmittedDate.ToLongDateString() for the @c.Department department.  The request is currently in @c.Status status.</p>
-                <p><a asp-page="Edit" asp-route-id="@c.id" class="card-link">Open</a></p>
+                <p>
+                    @if (c.Status == StatusCodes.Draft || c.Status == StatusCodes.PendingReview)
+                    {
+                        <a asp-page="Edit" asp-route-id="@c.id" class="card-link">Open</a>
+                    }
+
+                    <a asp-page="Edit" asp-route-id="@c.id" class="card-link">View</a>
+
+                </p>
             </div>
             <div class="card-footer">
-                <small class="text-muted">Submitted by @c.Username with @c.Stakeholders.Count() stakeholder(s).</small>
+                <small class="text-muted">Submitted by @c.Username with @c.Stakeholders.Count() stakeholder(s).  <a asp-page="Edit" asp-route-id="@c.id" class="card-link">Why am I seeing this request?</a></small>
             </div>
         </div>
     }
 
 </div>
 
-@*<div class="card mt-3">
-    <div class="card-header">
-        <strong><i class="fas fa-question-circle fa-lg" style="color: dimgray"></i> Can't find your business case?</strong>
+<div class="card mt-3">
+        <div class="card-header">
+            <strong><i class="fas fa-question-circle fa-lg" style="color: dimgray"></i> Can't find your business case?</strong>
+        </div>
+        <div class="card-body">
+            If you can't find your business case it could have been archived, we take them off your list 90 days
+            after they were approved or denied.  It could also be that someone else, like an assistant my have
+            submitted it for you.  In that case, the person submitting it will just need to add you to the
+            business case.
+        </div>
     </div>
-    <div class="card-body">
-        If you can't find your business case it could have been archived, we take them off your list 90 days
-        after they were approved or denied.  It could also be that someone else, like an assistant my have
-        submitted it for you.  In that case, the person submitting it will just need to add you to the
-        business case.
-    </div>
-</div>*@

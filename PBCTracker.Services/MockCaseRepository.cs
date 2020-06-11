@@ -61,6 +61,23 @@ namespace PBCTracker.Services
                     Recommendation = "Recommendations",
                     Approvers = { "genesis\\eromito", "genesis\\mnorman" },
                     Stakeholders = { "genesis\\mgoodall" }
+                },
+
+                new Case() {
+                    id = 4,
+                    Title = "This case is in draft stus to get a new Business Intelligence Analyst",
+                    Department = "Quality",
+                    CostCenter = "7375",
+                    RequestType = RequestTypes.Restructure,
+                    SubmittedDate = DateTime.Now.AddDays(-4),
+                    Username = "genesis\\chutchins",
+                    Status = StatusCodes.Draft,
+                    Situation = "Situation",
+                    Background = "Background",
+                    Assessment = "Assessment",
+                    Recommendation = "Recommendations",
+                    Approvers = { "genesis\\eromito", "genesis\\mnorman" },
+                    Stakeholders = { "genesis\\mspiker", "genesis\\eromito" }
                 }
             };
 
