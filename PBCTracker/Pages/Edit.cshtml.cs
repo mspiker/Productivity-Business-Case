@@ -33,12 +33,9 @@ namespace PBCTracker.Pages
         public IActionResult OnGetSearch(string term)
         {
             var results = userRepository.GetAllProfiles()
-                .Where(u => u.DisplayName.Contains(term))
-                .Select(u => new { u.DisplayName }).ToList();
+                .Where(u => u.DisplayName.ToLower().Contains(term.ToLower()) || u.Username.ToLower().Contains(term.ToLower()))
+                .Select(u => new { label = u.DisplayName, value = u.Username }).ToList();
             return new JsonResult(results);
-            
-            //var names = new List<string>() { "Mark Spiker (genesis\\mspiker)", "Another Spiker (genesis\\aspiker)" };
-            //return new JsonResult(names);
         }
         public IActionResult OnGetAddStakeholder(string data)
         {
