@@ -89,7 +89,7 @@ namespace PBCTracker.Services
 
         public Case GetCase(int id)
         {
-            throw new NotImplementedException();
+            return _caseList.FirstOrDefault(c => c.id == id);
         }
 
         public IEnumerable<Case> GetUserCases(string Username)
