@@ -7,7 +7,7 @@ namespace PBCTracker.Services
 {
     public interface ICaseRepository
     {
-        IEnumerable<Case> GetUserCases(string Username);
+        IEnumerable<Case> GetUserCases(UserProfile User);
         IEnumerable<Case> GetAllCases();
         Case GetCase(int id);
 

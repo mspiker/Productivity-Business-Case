@@ -4,6 +4,9 @@
     ViewData["Title"] = "Home";
 }
 
+    <div class="m-3">
+        <p>Welcome @Model.UserProfile.DisplayName, below are the business cases you submitted, need to approve or are a stakeholder in.  To create a new business case click the Create New Business Case button.</p>
+    </div>
 <a asp-page="/Inventory/Edit" class="btn btn-primary m-1">Create New Business Case</a>
 
 <hr />

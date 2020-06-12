@@ -92,13 +92,13 @@ namespace PBCTracker.Services
             return _caseList.FirstOrDefault(c => c.id == id);
         }
 
-        public IEnumerable<Case> GetUserCases(string Username)
+        public IEnumerable<Case> GetUserCases(UserProfile UserProfile)
         {
             // Account for the requests > 90 days old
             return _caseList.Where(c => 
-                (c.Username == Username) | 
-                (c.Stakeholders.Contains(Username)) |
-                ( c.Approvers.Contains(Username) && c.Status != StatusCodes.Draft));
+                (c.Username == UserProfile.Username) | 
+                (c.Stakeholders.Contains(UserProfile.Username)) |
+                ( c.Approvers.Contains(UserProfile.Username) && c.Status != StatusCodes.Draft));
         }
     }
 }

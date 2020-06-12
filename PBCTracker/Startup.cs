@@ -28,6 +28,7 @@ namespace PBCTracker
         {
             services.AddRazorPages();
             services.AddSingleton<ICaseRepository, MockCaseRepository>();
+            services.AddSingleton<IUserRepository, MockUserRepository>();
 
             services.Configure<RouteOptions>(options =>
             {

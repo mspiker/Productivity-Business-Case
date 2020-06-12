@@ -13,16 +13,24 @@ namespace PBCTracker.Pages
     public class IndexModel : PageModel
     {
         private readonly ICaseRepository caseRepository;
+        private readonly IUserRepository userRepository;
 
-        public IndexModel(ICaseRepository caseRepository)
+        public IndexModel(ICaseRepository caseRepository, IUserRepository userRepository)
         {
             this.caseRepository = caseRepository;
+            
+
+            // Mock the user logged in
+            UserProfile = userRepository.GetUser("genesis\\eromito");
+
         }
 
         public IEnumerable<Case> Cases { get; set; }
+      
+        public UserProfile UserProfile { get; set; }
         public void OnGet()
         {
-            Cases = caseRepository.GetUserCases("genesis\\eromito");
+            Cases = caseRepository.GetUserCases(UserProfile);
         }
     }
 }

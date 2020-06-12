@@ -113,7 +113,7 @@
             // Go to the server and autocomplete the field.
             $('#stakeholderSearch').autocomplete({
                 minLength: 3,
-                source: '@Url.Page("edit", "search")'
+                source: '@Url.Page("edit", "search")', 
             });
             // Add the stakeholder by sending the selection to the server so it can be added to the collection. 
             $('#stakeholderAdd').click(function () {
