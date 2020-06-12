@@ -9,11 +9,12 @@
 
 <form method="post" class="mt-3" enctype="multipart/form-data">
     <input hidden asp-for="Case.id" />
+
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group row">
         <div class="col-sm-6">
-            <label asp-for="Case.RequestType" class="col-sm-2 col-form-label"></label>
+            <label asp-for="Case.RequestType"></label>
             <select asp-for="Case.RequestType" class="custom-select mr-sm-2"
                     asp-items="Html.GetEnumSelectList<RequestTypes>()">
                 <option value="">Please Select</option>
@@ -23,7 +24,7 @@
 
     <div class="form-group row">
         <div class="col-sm-12">
-            <label asp-for="Case.Title" class="col-sm-2 col-form-label"></label>
+            <label asp-for="Case.Title"></label>
             <input asp-for="Case.Title" class="form-control" placeholder="" />
             <span asp-validation-for="Case.Title" class="text-danger"></span>
         </div>
@@ -32,12 +33,12 @@
     <div class="form-group row">
 
         <div class="col-sm-8">
-            <label asp-for="Case.Department" class="col-sm-2 col-form-label"></label>
+            <label asp-for="Case.Department"></label>
             <input asp-for="Case.Department" class="form-control" placeholder="" />
             <span asp-validation-for="Case.Department" class="text-danger"></span>
         </div>
         <div class="col-sm-4">
-            <label asp-for="Case.CostCenter" class="col-sm-2 col-form-label"></label>
+            <label asp-for="Case.CostCenter"></label>
             <input asp-for="Case.CostCenter" class="form-control" placeholder="" />
             <span asp-validation-for="Case.CostCenter" class="text-danger"></span>
         </div>
@@ -46,36 +47,97 @@
 
     <div class="form-group row">
         <div class="col-sm-12">
-            <label asp-for="Case.Situation" class="col-sm-2 col-form-label"></label>
-            <textarea rows="5" asp-for="Case.Situation" class="form-control-plaintext"></textarea>
-            <span asp-validation-for="Case.Situation" class="text-danger"></span>
+            <div class="card">
+                <div class="card-header">
+                    <label asp-for="Case.Situation" style="font-weight: bold;"></label>
+                </div>
+                <div class="card-body">
+                    <p>
+                        This section should include the explanation of the “why” related to the request which might include:
+                        <ul>
+                            <li>growth related to increased volumes</li>
+                            <li>increased access due to new providers being added</li>
+                            <li>new program start-up</li>
+                            <li>implementation of new service delivery model</li>
+                            <li>implementation of new or expanded technology use requiring staff reduction/reassignment</li>
+                            <li>discussing “essential” nature of a role asking to be replaced, etc</li>
+                        </ul>
+                    </p>
+                    <textarea rows="5" asp-for="Case.Situation" class="form-control"></textarea>
+                    <span asp-validation-for="Case.Situation" class="text-danger"></span>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="col-sm-12">
-            <label asp-for="Case.Background" class="col-sm-2 col-form-label"></label>
-            <textarea rows="5" asp-for="Case.Background" class="form-control-plaintext"></textarea>
-            <span asp-validation-for="Case.Background" class="text-danger"></span>
+            <div class="card">
+                <div class="card-header">
+                    <label asp-for="Case.Background" style="font-weight: bold;"></label>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Include the historical information that explains how we have evolved to the current state. This should include in graphic form (when possible):
+                        <ul>
+                            <li>productivity performance</li>
+                            <li>volumes data/trending</li>
+                            <li>pertinent data impacting financials (e.g. lost revenue due to access issues; overtime costs; employee turnover, patient satisfaction scores, etc.)</li>
+                        </ul>
+                    </p>
+                    <textarea rows="5" asp-for="Case.Background" class="form-control"></textarea>
+                    <span asp-validation-for="Case.Background" class="text-danger"></span>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="col-sm-12">
-            <label asp-for="Case.Assessment" class="col-sm-2 col-form-label"></label>
-            <textarea rows="5" asp-for="Case.Assessment" class="form-control"></textarea>
-            <span asp-validation-for="Case.Assessment" class="text-danger"></span>
+            <div class="card">
+                <div class="card-header">
+                    <label asp-for="Case.Assessment" style="font-weight: bold;"></label>
+                </div>
+                <div class="card-body">
+                    <p>
+                        This section should include information related to your assessment of the situation and how it could be improved by the modifications in staffing you are requesting. It should also include any actions evaluated or taken to meet departmental/program needs without the addition of staff (e.g. expanded use of current technology, restructuring of current staff roles to achieve “top of license/skills” performance; partnership with LSS to evaluate opportunities for process or service delivery improvements, etc.)
+                    </p>
+                    <p>
+                        Additionally, please provide data relating the impacts to the department/service (i.e. financial, access, patient satisfaction, employee satisfaction, etc.) if actions requested are not achieved.
+                    </p>
+                    <textarea rows="5" asp-for="Case.Assessment" class="form-control"></textarea>
+                    <span asp-validation-for="Case.Assessment" class="text-danger"></span>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="col-sm-12">
-            <label asp-for="Case.Recommendation" class="col-sm-2 col-form-label"></label>
-            <textarea rows="5" asp-for="Case.Recommendation" class="form-control"></textarea>
-            <span asp-validation-for="Case.Recommendation" class="text-danger"></span>
+            <div class="card">
+                <div class="card-header">
+                    <label asp-for="Case.Recommendation" style="font-weight: bold;"></label>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Include recommendations for action with appropriate outcome metrics and associated timelines for achievement of those outcomes (NOTE: timeline should not exceed six (6) months.
+                    </p>
+                    <textarea rows="5" asp-for="Case.Recommendation" class="form-control"></textarea>
+                    <span asp-validation-for="Case.Recommendation" class="text-danger"></span>
+                </div>
+            </div>
         </div>
     </div>
 
+    @{ var stakeholders = String.Join(",", Model.Case.Stakeholders); }
+    <input id="stakeholder_values" asp-for="StakeholderList" value="@stakeholders" />
+
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-page="Index" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
 </form>
 
 <div class="card">
@@ -83,12 +145,12 @@
 
     <div class="card-body">
         <p>
-        By default, you are a stakeholder as the submitter.  If you want others to have access to this business case simply 
-        add them as stakeholders below.  You and the stakeholders will have access to the business case for 90 days from the 
-        date it is submitted and will have full edit rights until the business case is either approved or denied. 
+            By default, you are a stakeholder as the submitter.  If you want others to have access to this business case simply
+            add them as stakeholders below.  You and the stakeholders will have access to the business case for 90 days from the
+            date it is submitted and will have full edit rights until the business case is either approved or denied.
         </p>
         <form>
-            
+
             <div class="form-group row">
                 <div class="col-sm-8">
                     <div class="input-group">
@@ -106,10 +168,33 @@
     </div>
 </div>
 
+
+
 @section Scripts {
 
     <script>
+        function updateStakeholders() {
+            var usernames = $("#stakeholder_values").val().substr(1).split(',');
+            $('#stakeholderList').html("");
+            usernames.forEach(
+                function (item, index) {
+                    $('#stakeholderList').html($('#stakeholderList').html() + `
+                        <div class='card mt-3'>
+                            <div class='card-body'>
+                                <i class='fa fa-user fa-lg' aria-hidden='true'></i>_data - _displayName
+                            </div>
+                        </div>`
+                        .replace('_data', item)
+                        .replace('_displayName', 'Look up users display name here'));
+                }
+            )
+        }
+
         $(document).ready(function () {
+
+            // On initial load show the stakeholders already set in the repository.
+            updateStakeholders();
+
             // Go to the server and autocomplete the field.
             $('#stakeholderSearch').autocomplete({
                 minLength: 3,
@@ -124,7 +209,8 @@
                         if (data != "!error") {
                             $('#stakeholderSearch').val("");
                             $('#stakeholderValidation').html("");
-                            $('#stakeholderList').html($('#stakeholderList').html() + "<div class='card mt-3'><div class='card-body'><i class='fa fa-user fa-lg' aria-hidden='true'></i> " + data + "</div></div>");
+                            $('#stakeholder_values').val($('#stakeholder_values').val() + ',' + data);
+                            updateStakeholders();
                         } else {
                             // Something bad happened.
                             $('#stakeholderValidation').html("Unable to add stakeholder, this is not a valid selection, please choose from the list.");

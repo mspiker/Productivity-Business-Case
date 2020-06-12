@@ -23,11 +23,22 @@ namespace PBCTracker.Pages
         }
         [BindProperty]
         public Case Case { get; set; }
+        [BindProperty]
+        public string StakeholderList { get; set; }
 
         public IActionResult OnGet(int? id)
         {
             Case = caseRepository.GetCase(id.Value);
             return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                Case.Stakeholders = StakeholderList.Split(",").ToList();
+            }
+            return RedirectToPage("index");
         }
 
         public IActionResult OnGetSearch(string term)
